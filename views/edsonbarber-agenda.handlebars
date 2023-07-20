@@ -1,0 +1,49 @@
+<div class="content-agenda">        
+        <div>
+            <h1>Agenda:</h1>
+        </div>
+
+        <form id="form-agenda" action="/edsonbarber-horarios" method="POST">
+            <div id="campos-1">
+                <label for="botao-edson" class="label-agenda">
+                    <input class="opcao-agenda" type="radio" name="opcao" id="botao-edson" value="Edson Araújo" onclick="escolherBarbeiroAgenda()">
+                    Edson
+                </label>
+                <label for="botao-edilson" class="label-agenda">
+                    <input class="opcao-agenda" type="radio" name="opcao" id="botao-edilson" value="Edilson Araújo" onclick="escolherBarbeiroAgenda()">
+                    Edilson
+                </label>
+                <label for="botao-bruno" class="label-agenda">
+                    <input class="opcao-agenda" type="radio" name="opcao" id="botao-bruno" value="Bruno Luiz" onclick="escolherBarbeiroAgenda()">Bruno
+                </label>
+            </div>
+            <div id="campos-2">
+                <input name="data" id="date-input" class="inputs" type="date" onclick="dataMax()">   
+                <button type="submit" id="buscar" onclick="botaoAgenda">Buscar</button>             
+            </div>
+            
+        </form>
+        <div>
+            <table id="table-agenda"> 
+                <thead>              
+                    <tr>
+                        <th class="th-agenda">CLIENTES</th>
+                        <th class="th-agenda">HORÁRIO</th>
+                        <th class="th-agenda">SERVIÇO</th>
+                    </tr>
+                </thead>  
+                {{#each dados}}
+                    <tbody>                    
+                        <tr>
+                            <td class="td-agenda">{{this.nome}}</td>
+                            <td class="td-agenda">{{this.hora}}</td>
+                            <td class="td-agenda">{{this.servico}}</td>
+                            <td class="td-agenda"><a href="https://api.whatsapp.com/send?phone={{this.telefone}}&text=Eai+guerreiro+%2C+estou+disponível&type=phone_number&app_absent=0" target="_blank" rel="external"><img src="imagens/whatsapp.png" class="imagem-agenda" alt=""></a></td>
+                            <td class="td-agenda"><a href="/edsonbarber-agenda/{{this.id}}" onclick="excluir(event)"><img src="imagens/lixeira.png" class="imagem-agenda" alt=""></a></td>                        
+                        </tr>
+                    </tbody>
+                {{/each}}
+            </table>
+        <a href="https://suagendabarber.siseven.com.br/edsonbarber" target="_blank" rel="author"><button>Agendar cliente</button></a>
+        </div>
+    </div>  

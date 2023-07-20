@@ -1,0 +1,138 @@
+@charset "UTF-8";
+html{
+    background-color: #000000;
+}
+    
+body {
+    background-image: url(imagens/Barbearia\ 2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;    
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+h1 {
+    color: #ffbd59;
+    margin-top: 0px;
+}
+
+h2, h3, p, footer {
+    color: #f1e4d8;
+}
+
+table {
+    background-color: #000000de;
+    border: 2px solid;
+    border-radius: 10px;    
+    border-color: #f1e4d89a;   
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em; 
+    width: 100%; 
+}
+
+th {
+    color: #f1e4d8; 
+    font-size: 15px;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid;    
+    color: #f1e4d8; 
+    font-size: 15px;
+}
+
+button, .label-agenda {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: #f1e4d8;
+    margin: 12px 4px;
+    background-color: #000000de;
+    color: #f1e4d8;
+    cursor: pointer;
+    font-weight: bold;     
+}
+
+input[type="radio"] {  
+    display: none;
+  }
+
+img {
+    width: 30px;
+}
+
+#campos-1 {
+    padding: 10px;
+}
+
+#campos-2 {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#editar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000d0;
+    border: 2px solid;
+    border-color: #ffbd59;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#editar p {
+    margin-bottom: 5px;
+
+}
+
+.content-agenda { 
+    background-image: linear-gradient(#5225003d, #0000008f,#000000c6, #000000de, #000000 );                                      
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.label-editar {    
+    font-size: 1rem;
+    color: #f1e4d8;
+    font-weight: bold;
+}
+
+.inputs {
+    padding: 8px 5px;
+    outline: none;
+    margin: 1rem;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: #f1e4d8;
+    background-color: #000000b3;
+    color: #ffbd59;    
+    box-sizing: border-box;
+    transition: .6s;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1rem;
+    
+}
+
+.inputs:focus {
+    border-color: #ffbd59;
+}
+
+.inputs::placeholder {
+    color: #292929;
+}
+
+

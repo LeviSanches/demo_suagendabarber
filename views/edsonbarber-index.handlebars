@@ -1,0 +1,267 @@
+<div class="content">  
+        <form id="form" action="/edsonbarber-agendado" method="POST">       
+            <img src="imagens/EdsonBarber_logo.png" alt="logo-barbearia" id="logo">         
+            <div id="cliente">
+                <h1>Dados do Cliente</h1>
+                <div>
+                    <p>Nome:</p>
+                    <input type="text" id="nome" placeholder="Nome e Sobrenome" class="inputs required" oninput="validarNome()" maxlength="25" name="nome">
+                    <span class="span-required">Nome deve conter no mínimo 3 caracteres.</span>                    
+                </div>
+                <div>
+                    <p>Whatsapp:</p>
+                    <input type="tel" id="telefone" placeholder="DDD + número" class="inputs required" oninput="validarTelefone()" maxlength="15" name="telefone">
+                    <span class="span-required">Digite um número válido</span>
+                </div>
+                <button id="botao-cadastro" type="button" onclick="validarBotao()">Avançar</button>
+            </div>
+            <div id="barbeiro">
+                <h1>Escolha um dos profissionais abaixo:</h1>
+                <div>               
+                    <input class="input-radio" type="radio" id="edson" name="opcao" onclick="escolherBarbeiro()" value="Edson Araújo">
+                    <label for="edson" class="selecionado"><img src="imagens/EdsonBarber_Edson.png" class="imagem-barbeiro" alt="Imagem de Edson, clique aqui se deseja escolher-lo."> <p class="nome-barbeiro">Edson Araújo</p></label>        
+                </div>
+                <!--<div>
+                    <input class="input-radio" type="radio" id="edilson" name="opcao" onclick="escolherBarbeiro()" value="Edilson Araújo">
+                    <label for="edilson" class="selecionado"><img src="imagens/EdsonBarber_Edilson.jpg" class="imagem-barbeiro" alt="imagem de Edilson, clique aqui se deseja escolher-lo."> <p class="nome-barbeiro">Edilson Araújo</p>
+                    </label>
+                </div>-->
+                <div>
+                    <input class="input-radio" type="radio" id="bruno" name="opcao" onclick="escolherBarbeiro()" value="Bruno Luiz">
+                    <label for="bruno" class="selecionado"><img src="imagens/EdsonBarber_Bruno.png" class="imagem-barbeiro" alt="imagem de Bruno, clique aqui se deseja escolher-lo."> <p class="nome-barbeiro">Bruno Luiz</p>
+                    </label>
+                </div>
+                <div class="botoes">
+                    <button type="button" onclick="voltarCliente()" alt="botão de voltar.">Voltar</button>
+                    <button type="button" id="botao-barbeiro" onclick="avancarServico()" alt="botão de avançar.">Avançar</button>
+                </div>
+            </div>
+            <div id="servico">
+                <div class="listaServicos">        
+                    <h1>Escolha o serviço</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="th-cliente">CORTES</th>
+                                <th class="th-cliente">PREÇO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="0">
+                                        <input id="0" onclick="escolherServico('1')" class="input-radio" type="radio" name="servico" value="Corte Clássico">
+                                        CORTE CLÁSSICO
+                                    </label>
+                                </td>
+                                <td class="td-cliente">R$ 20,00</td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="1">
+                                        <input id="1" onclick="escolherServico('2')" class="input-radio" type="radio" name="servico" value="Corte Navalhado">
+                                        CORTE NAVALHADO
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label class="label-preco">
+                                        R$ 22,00
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="2">
+                                        <input id="2" onclick="escolherServico('3')" class="input-radio" type="radio" name="servico" value="Corte na Tesoura">
+                                        CORTE NA TESOURA
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 30,00
+                                    </label>
+                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="3">
+                                        <input id="3" onclick="escolherServico('4')" class="input-radio" type="radio" name="servico" value="Corte + Tesoura">
+                                        CORTE + TESOURA
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 25,00
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="4">
+                                        <input id="4" onclick="escolherServico('5')" class="input-radio" type="radio" name="servico" value="Corte + Barba">
+                                        CABELO + BARBA
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 35,00
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="5">
+                                        <input id="5" onclick="escolherServico('6')" class="input-radio" type="radio" name="servico" value="Barba">
+                                        BARBA
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 15,00
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="6">
+                                        <input id="6" onclick="escolherServico('7')" class="input-radio" type="radio" name="servico" value="Friso">
+                                        FRISO
+                                    </label>
+                                </td>
+                                <td class="td-cliente"> 
+                                    <label>
+                                        R$ 15,00
+                                    </label></td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="7">
+                                        <input id="7" onclick="escolherServico('8')" class="input-radio" type="radio" name="servico" value="Pigmentação">
+                                        PIGMENTAÇÃO
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 20,00
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="8">
+                                        <input id="8" onclick="escolherServico('9')" class="input-radio" type="radio" name="servico" value="Sobranchelha">
+                                        SOBRANCELHA
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 10,00                                        
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="9">
+                                        <input id="9" onclick="escolherServico('10')" class="input-radio" type="radio" name="servico" value="Barboterapia">
+                                        BARBOTERAPIA
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 20,00                                        
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="10">
+                                        <input id="10" onclick="escolherServico('11')" class="input-radio" type="radio" name="servico" value="Descoloração">
+                                        DESCOLORAÇÃO
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 70,00                                        
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="11">
+                                        <input id="11" onclick="escolherServico('12')" class="input-radio" type="radio" name="servico" value="Luzes">
+                                        LUZES
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 40,00                                        
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-cliente">
+                                    <label class="label-borda" for="12">
+                                        <input id="12" onclick="escolherServico('13')" class="input-radio" type="radio" name="servico" value="Plano Mensal">
+                                        PLANO MENSAL
+                                    </label>
+                                </td>
+                                <td class="td-cliente">
+                                    <label>
+                                        R$ 30,00                                        
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="botoes">
+                        <button type="button" onclick="voltarBarbeiro()">Voltar</button>
+                        <button id="botao-servico" type="button" onclick="avancarData()">Avançar</button>
+                    </div>
+                </div>
+            </div>
+            <div id="data">
+                <h1>Selecione a data:</h1> 
+                <div>
+                    <input name="data" id="date-input" type="date" class="inputs required-data" onclick="dataMinMax()" oninput="diaDeFuncionamento()" onchange="horarioDisponivel()">
+                </div>
+                <div>
+                    <select id="horario" name="horario" class="inputs required-data" onchange="mudancaHorario()">
+                    </select>
+                    <span id="span-select">Sem horário disponível.</span>             
+                </div> 
+                <div class="botoes">
+                    <button type="button" onclick="voltarServico()">Voltar</button>
+                    <button id="botao-confirmar" onclick="validarFormulario()" type="button">Avançar</button>                    
+                </div>
+                <div id="resumo">                                    
+                </div>                            
+            </div>            
+        </form> 
+    </div>
+    <div id="contato">
+        <h2>Contato:</h2>
+        <div id="social">
+            <ul id="lista-social">
+                <li>
+                    <div id="edson">
+                        <a href="https://www.instagram.com/edsonaraujobarber/" target="_blank" rel="external"><img class="social-image" src="imagens/instagram.png" alt="instagram de Edson"></a>
+                        <a href="https://api.whatsapp.com/send?phone=5575982788012" target="_blank" rel="external"><img class="social-image" src="imagens/whatsapp.png" alt="Whatsapp de Edson"></a>
+                        <p>Edson Araújo</p>
+                    </div>
+                    <div id="bruno">                        
+                        <a href="https://www.instagram.com/brunodocorte_fc/" target="_blank" rel="external"><img class="social-image" src="imagens/instagram.png" alt="instagram de Edilson"></a>
+                        <a href="https://api.whatsapp.com/send?phone=5575981817339" target="_blank" rel="external"><img class="social-image" src="imagens/whatsapp.png" alt="Whatsapp de Edilson"></a>             
+                        <p>Bruno Luiz</p>           
+                    </div>                    
+                </li>
+            </ul>
+        </div>
+        <footer>
+            <address>                
+                <p>Deseja automatizar o seu agendamento? Entre em contato conosco pelo<a href="https://www.instagram.com/suagendabarber/" target="_blank" rel="author" alt="Instagram">Instagram</a>ou<a href="https://api.whatsapp.com/send?phone=5575982868624" target="_blank" rel="author" alt="Whatsapp">Whatsapp.</a></p> 
+            </address>
+            <p id="copyright">Copyright © 2022 SISEVEN. Todos os direitos reservados.</p>
+            <img id="logo-suagendabarber" src="imagens/logo.png" alt="">
+        </footer>
+    </div>

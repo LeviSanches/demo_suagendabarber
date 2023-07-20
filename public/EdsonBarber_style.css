@@ -1,0 +1,422 @@
+@charset "UTF-8";
+
+html {
+    background-color: #000000;
+}
+body {
+    background-image: url(imagens/EdsonBarber_background.jpg);
+    font-family: 'Roboto', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+h1 {
+    color: #ffbd59;
+    margin-top: 0px;
+}
+
+h2, h3, p, footer {
+    color: #f1e4d8;
+}
+
+table {
+    background-color: #000000de;
+    border: 2px solid;
+    border-radius: 10px;   
+    border-color: #f1e4d89a;   
+    padding: 15px;
+    width: 100%; 
+}
+
+@media (max-width: 354px) {
+    .th-cliente {
+        font-size: 14px;
+    }
+
+    .td-cliente {
+        font-size: 13px;
+    }
+
+    .td-cliente .label-borda {    
+        display: flex;
+        flex-direction: column;
+        padding: 10px 5px;
+        border: 1px solid;
+        border-radius: 5px;
+        color: #f1e4d8; 
+        font-size: 13px;
+        cursor: pointer;
+    }
+}
+
+th {
+    padding-bottom: 1em;
+}
+
+#table-agenda {
+    padding: 10px 5px;    
+}
+
+.th-agenda {
+    color: #f1e4d8; 
+    font-size: 15px;
+}
+
+.td-agenda {
+    border-radius: 4px;
+    border: 1px solid ;
+    padding: 5px;
+    color: #f1e4d8; 
+    font-size: 17px;
+}
+
+@media (max-width: 423px) {
+    .th-agenda {         
+        font-size: 13px;
+    }
+    .td-agenda {
+        border-radius: 4px;
+        padding: 5px;
+        font-size: 14px;
+    }
+}
+
+.label-borda {    
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 5px;
+    color: #f1e4d8; 
+    font-size: 15px;
+    cursor: pointer;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    color: #ffbd59;
+    text-decoration: none;
+    margin: 5px;
+}
+
+address {
+    padding: 10px; 
+    text-align: center;
+    font-size: 12px;     
+}
+
+button {
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: #f1e4d8;
+    margin: 12px 4px;
+    background-color: #000000de;
+    color: #f1e4d8;
+    cursor: pointer;
+    font-weight: bold; 
+    
+}
+
+.label-agenda {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: #f1e4d8;
+    margin: 12px 4px;
+    background-color: #000000de;
+    color: #f1e4d8;
+    cursor: pointer;
+    font-weight: bold;     
+}
+
+select, option{
+    text-align: center;
+    font-weight: bold; 
+}
+
+.imagem-barbeiro  {    
+    border-radius: 8rem;
+    color: #ffbd59;
+}
+
+.imagem-agenda {
+    width: 30px;
+}
+
+.content {
+    background-image: linear-gradient(#000000e6, #5225003d);                                  
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content-agenda { 
+    background-image: linear-gradient(#5225003d, #0000008f,#000000c6, #000000de, #000000 );                                      
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.inputs, select {
+    padding: 8px 5px;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid;
+    border-color: #f1e4d8;
+    background-color: #000000b3;
+    color: #ffbd59;    
+    box-sizing: border-box;
+    transition: .6s;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1rem;
+}
+
+
+.inputs:focus {
+    border-color: #ffbd59;
+}
+
+.inputs::placeholder {
+    color: #292929;
+}
+
+.span-required {
+    display: none;
+    font-size: 0.9rem;
+    margin: 3px 0 0 1px;
+    color: #e63636;
+}
+
+
+.social-image {
+    width: 30px;
+    height: 30px;
+}
+
+.listaServicos {
+    color: #f1e4d8; 
+    display: flex;   
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="radio"] {
+  appearance: none;
+  outline: none;
+  border: none;
+  display: none;
+}
+
+.opcao {
+    background-color: #000000;
+}
+
+#logo {    
+    margin: 1rem;
+}
+
+#logo-contato {
+    width: 75px;
+}
+
+#logo-suagendabarber {
+    width: 75px;
+}
+
+#copyright {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 10px;
+}
+
+#span-data {
+    margin: 5px 0 1rem;
+}
+
+#date-input {
+    margin: 0 0 15px;
+}
+
+#contato {
+    text-align: center;  
+    background-image: linear-gradient(#5225003d, #0000008f,#000000c6, #000000de, #000000f9 );  
+}
+
+#social {    
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+#edson, #edilson, #bruno {
+    display: flex;
+    align-items: center;
+}
+
+#lista-social {    
+    padding: 0 40px;
+    list-style-type: none;
+}
+
+#cliente {
+    background-color: #000000d0;
+    border: 2px solid;
+    border-color: #ffbd59;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+#span-select {
+    color: #ffbd59;
+    font-size: 2rem;
+    display: none;
+}
+
+#agendado {
+    font-size: 4rem;
+}
+
+#check {
+    width: 5rem;
+    height: auto;
+}
+
+#lista-resumo {
+    border: 2px solid;
+    border-radius: 1rem; 
+    border-color: #ffbd59;
+    text-align: left;
+    padding: 15px 15px 15px 25px;
+    color: #f1e4d8;
+    background-color: #000000d0;
+    list-style-type: "- ";
+}
+
+#campos-1 {
+    padding: 10px;
+    margin-bottom: 15px;       
+}
+
+@media (max-width: 325px) {
+    #campos-1 {
+        display: flex;
+        flex-direction: column; 
+    }
+}
+
+#campos-2 {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label-editar {    
+    font-size: 1rem;
+    color: #f1e4d8;
+    font-weight: bold;
+}
+
+#cliente {
+    display: block;
+}
+
+#barbeiro,
+#servico,
+#data,
+#final {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: none;
+}
+#barbeiro.show,
+#servico.show,
+#data.show,
+#final.show {
+    opacity: 1;
+    display: block;
+}
+
+#resumo {    
+    border-radius: 15px;
+    background-color: #000000d0;
+    margin: 20px;
+    padding: 2px 2px 1rem 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    display: none;
+}
+.botoes {      
+    display: inline-block;
+    text-align: center;
+    align-items: center;    
+}
+
+#botao-cadastro {
+    margin: 15px 0 0 0;
+}
+
+#botao-barbeiro {    
+    opacity: 0;
+    transition: opacity 1s ease-in-out; 
+    display: none;   
+}
+
+#botao-barbeiro.show {
+    opacity: 1;
+    display: block;
+}
+
+#botao-servico {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: none;
+  }
+#botao-servico.show {
+    opacity: 1;
+    display: block;
+}
+
+#botao-formulario {
+    display: block;
+}
+
+#botao-agendar {    
+    border: 3px solid;
+    border-color: #ffbd59;
+    color: #ffbd59;
+    font-size: 1.5rem;
+}
+
+#botao-final {
+    margin: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
