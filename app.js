@@ -14,13 +14,6 @@ app.use(express.static("public"));
 app.engine("handlebars", handlebars({defaultLayout: "principal"}));
 app.set("view engine", "handlebars");
 
-
-
-
-
-//realiza um agendamento
-
-
 app.listen(port, () => {
   console.log("Servidor rodando na porta: " + port )
 });

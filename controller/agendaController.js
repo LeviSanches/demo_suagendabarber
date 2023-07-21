@@ -1,36 +1,39 @@
 const agenda = require('../models/Agenda');
 
-const getAll = async (req, res) => {
-    let barbeiro = req.body.opcao;
-    let data = req.body.data;
+const getAll = (req, res) => {    
     try {
-        const query = await agenda.findAll({
-            attributes: ['nome', 'hora', 'servico', 'telefone', 'id'],
+        agenda.findAll({
+            attributes: ["nome", "hora", "servico", "id", "telefone"],
             where: {
-                barbeiro: barbeiro,
-                data: data
+              barbeiro: req.body.opcao,
+              data: req.body.data
             },
-            order: [['hora', 'ASC']]
-        })
-        const dados = query.map((item) => {
-            item.telefone = item.telefone.replace(/\D/g, "");
+            order: [
+              ["hora", "ASC"]
+            ]
+        }).then(tabela => {
+        const dados = tabela.map(item => {              
+            item.telefone = item.telefone.replace(/\D/g, '');
             return item.toJSON();
-        });  
-        res.status(200).render('edsonbarber-agenda', {dados});
+        });
+        res.render("edsonbarber-agenda", {dados});
+        }).catch(erro => {
+        console.log("ocorreu um erro:", erro)
+        })
     } catch (error) {
         res.status(500).json({message: `Erro ao consultar os horários, erro: ${error}`});
-    }
+    }    
 }
 
 const remove = async (req, res) => {
-    let id = req.params.id;
+    let idCliente = req.params.id;
     try {
         await agenda.destroy({
-            where: { 'id': id }
+            where: {id: idCliente}
         })
-        await res.status(200).redirect('/edsonbarber-agenda');
+        res.status(200).json({mensagem: `dados deletados com sucesso! ou não...`})
     } catch (error) {
-        res.status(500).json({message: `Erro ao excluir um horário, erro: ${error}`});
+        res.status(500).json({message: `Erro ao deletar o horário agendado: ${error}`})
     }
 }
 
@@ -44,9 +47,7 @@ const exibirHorariosAgendados = async (req, res) => {
                 barbeiro
             }
         })
-        const dados = query.map((item) => {
-            item.hora
-        })
+        const dados = query.map(item => item.hora);        
         res.status(200).send(dados);
     } catch (error) {
         res.status(500).json({message: `Erro ao consultar os horários agendados: ${error}`})
@@ -73,70 +74,7 @@ const agendar = async (req, res) => {
             data: date,
             hora: hour,
         });
-
-        res.status(200).redirect("/agendado");
-
-        /*
-        if (barber === "Edson Araújo") {
-          const messageClient = {
-              'number': `${tel}`,
-              'message': `Olá *${formattedName}*, o seu horário foi agendado com sucesso! ✅\n\n⏰ Horário: *${hour}h*\n📆 Data: *${formattedDate}*\n💈 Serviço: *${service}*\n👨‍💼 Barbeiro: *${barber}*\n\n⚠ É muito importante para nós, barbeiros, que os clientes cheguem com antecedência ao horário marcado. Isso nos permite trabalhar da melhor forma possível.\n\nCOMPROVANTE ☑`
-          }; 
-          const messageOwner = {
-              'number': '5575991458542',
-              'message': `📣 Você tem um novo agendamento!\n\n💇‍♂️ Cliente: *${formattedName}*\n📆 Data: *${formattedDate}*\n⏰ Horário: *${hour}h*\n💈Serviço: *${service}*`
-          }
-          const responseClient = await axios.post("https://whatsapp.siseven.com.br/send-edsonbarber", messageClient)
-          const statusClient = responseClient.status;
-          if (statusClient !== 200) {
-              throw new Error("Erro na requisição HTTP, cod: " + statusClient);
-          }         
-          const responseOwner = await axios.post("https://whatsapp.siseven.com.br/send-edsonbarber", messageOwner)
-          const statusOwner = responseOwner.status;
-          if (statusOwner !== 200) {
-              throw new Error("Erro na requisição HTTP, cod: " + statusOwner);
-          }         
-          }else if (barber === "Edilson Araújo") {
-          const messageClient = {
-              'number': `${tel}`,
-              'message': `Olá *${formattedName}*, o seu horário foi agendado com sucesso! ✅\n\n⏰ Horário: *${hour}h*\n📆 Data: *${formattedDate}*\n💈 Serviço: *${service}*\n👨‍💼 Barbeiro: *${barber}*\n\n⚠ É muito importante para nós, barbeiros, que os clientes cheguem com antecedência ao horário marcado. Isso nos permite trabalhar da melhor forma possível.\n\nCOMPROVANTE ☑`
-          }; 
-          const messageOwner = {
-              'number': '75983185932',
-              'message': `📣 Você tem um novo agendamento!\n\n💇‍♂️ Cliente: *${formattedName}*\n📆 Data: *${formattedDate}*\n⏰ Horário: *${hour}h*\n💈Serviço: *${service}*`
-          }
-          const responseClient = await axios.post("https://bot.siseven.com.br/send", messageClient)
-          const statusClient = responseClient.status;
-          if (statusClient !== 200) {
-              throw new Error("Erro na requisição HTTP, cod: " + statusClient);
-          }         
-          const responseOwner = await axios.post("https://bot.siseven.com.br/send", messageOwner)
-          const statusOwner = responseOwner.status;
-          if (statusOwner !== 200) {
-              throw new Error("Erro na requisição HTTP, cod: " + statusOwner);
-          }         
-        }
-        else {
-          const messageClient = {
-              'number': `${tel}`,
-              'message': `Olá *${formattedName}*, o seu horário foi agendado com sucesso! ✅\n\n⏰ Horário: *${hour}h*\n📆 Data: *${formattedDate}*\n💈 Serviço: *${service}*\n👨‍💼 Barbeiro: *${barber}*\n\n⚠ É muito importante para nós, barbeiros, que os clientes cheguem com antecedência ao horário marcado. Isso nos permite trabalhar da melhor forma possível.\n\nCOMPROVANTE ☑`
-          }; 
-          const messageOwner = {
-              'number': '75981817339',
-              'message': `📣 Você tem um novo agendamento!\n\n💇‍♂️ Cliente: *${formattedName}*\n📆 Data: *${formattedDate}*\n⏰ Horário: *${hour}h*\n💈Serviço: *${service}*`
-          }
-          const responseClient = await axios.post("https://whatsapp.siseven.com.br/send-edsonbarber", messageClient)
-          const statusClient = responseClient.status;
-          if (statusClient !== 200) {
-          throw new Error("Erro na requisição HTTP, cod: " + statusClient);
-          }        
-          const responseOwner = await axios.post("https://whatsapp.siseven.com.br/send-edsonbarber", messageOwner)
-          const statusOwner = responseOwner.status;
-          if (statusOwner !== 200) {
-              throw new Error("Erro na requisição HTTP, cod: "+ statusOwner);
-          }         
-        }  */      
-
+        res.status(200).redirect("/agendado");       
     } catch (error) {
         res.status(500).json({message: `Erro ao realizar um agendamento: ${error}`})
     }
@@ -148,5 +86,5 @@ module.exports = {
     getAll,
     remove,
     exibirHorariosAgendados,
-    agendar
+    agendar,
 }

@@ -24,8 +24,8 @@ formAgenda.addEventListener("submit", (event) => {
 function login() {
     let senha = document.getElementById("senha").value;
 
-    fetch("/agenda/horarios", {
-        method: "GET",
+    fetch("/agenda", {
+        method: "POST",
         headers: {
             "content-type": "application/x-www-form-urlencoded"
         },
@@ -34,7 +34,7 @@ function login() {
     .then(response => response.json())
     .then(data => {
         if (data.sucess) {
-            window.location.href = "/agenda/horarios";
+            window.location.href = "/agenda";
         } else {
             alert("Senha incorreta");
         }
@@ -100,11 +100,27 @@ function botaoAgenda() {
     }
 }
 
-function excluir(event) {
-    if (!confirm("Tem certeza que deseja excluir este registro na agenda?")){
-        event.preventDefault();
-    } 
-}
+function excluir(id) {    
+    const confirmar = window.confirm('Tem certeza que deseja deletar esse registro?');
+    if (confirmar) {
+        fetch(`/agenda/${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro ao excluir o registro: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            window.location.href = "/agenda";
+            console.log(data);
+        })
+        .catch(error => {
+            console.error(`erro ao realizar a consulta no banco de dados: ${error}`);
+        })
+    }
+}    
 
 
 function dataMax() {
