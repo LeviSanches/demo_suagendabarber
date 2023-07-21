@@ -20,12 +20,10 @@ function autenticacao(req, res, next) {
     }
 }
 
-app.get("/edsonbarber-senha", (req, res) => {
+router.get("/edsonbarber-senha", (req, res) => {
     res.render("edsonbarber-senha");
-  });
-  
-//rota da agenda
-app.post("/agenda", (req, res) => {
+});
+router.post("/agenda", (req, res) => {
     try {
         const senha = req.body.senha;
         if (senha === "123") {
@@ -39,12 +37,36 @@ app.post("/agenda", (req, res) => {
     }    
 });
 
-router.get("/agenda", autenticacao, (req, res) => {
-    res.status(200).render("edsonbarber-agenda");
+router.get("/", (req, res) => {  
+    try {
+        res.status(200).render("edsonbarber-index")
+    } catch (error) {
+        res.status(500).json({message: `Erro ao acessar a página: ${error}`})
+    }    
 });
-router.post("/agenda/horarios", autenticacao, agenda.getAll);
+
+router.get("/agenda", autenticacao, (req, res) => {
+    try {
+        res.status(200).render("edsonbarber-agenda");
+    } catch (error) {
+        res.status(500).json({message: `Erro ao acessar a página: ${error}`})
+    }
+    
+});
+router.get("/agendado", (req, res) => {
+    try {
+        res.status(200).sendFile(__dirname + "/views/edsonbarber-agendado.html")
+    } catch (error) {
+        res.status(500).json({message: `Erro ao acessar a página: ${error}`})
+    }    
+})
+
+router.post("/", agenda.agendar)
+
+router.get("/agenda/horarios", autenticacao, agenda.getAll);
+
 router.delete("/agenda/horarios/:id", autenticacao, agenda.remove);
 
-
+router.get('/horarios/:data/:barbeiro', agenda.exibirHorariosAgendados);
 
 module.exports = router;

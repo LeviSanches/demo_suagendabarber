@@ -591,7 +591,7 @@ function atualizaHorariosDisponiveis() {
         }
     }
 
-    fetch(`/horarios-cadastrados/${dataSelecionada}/${barbeiroValue}`)
+    fetch(`/horarios/${dataSelecionada}/${barbeiroValue}`)
       .then(response => response.json())
       .then(horariosCadastrados => {
         const select = document.getElementById('horario');

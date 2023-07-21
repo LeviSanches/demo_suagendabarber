@@ -24,8 +24,8 @@ formAgenda.addEventListener("submit", (event) => {
 function login() {
     let senha = document.getElementById("senha").value;
 
-    fetch("/edsonbarber-agenda", {
-        method: "POST",
+    fetch("/agenda/horarios", {
+        method: "GET",
         headers: {
             "content-type": "application/x-www-form-urlencoded"
         },
@@ -34,7 +34,7 @@ function login() {
     .then(response => response.json())
     .then(data => {
         if (data.sucess) {
-            window.location.href = "/edsonbarber-agenda";
+            window.location.href = "/agenda/horarios";
         } else {
             alert("Senha incorreta");
         }

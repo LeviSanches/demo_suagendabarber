@@ -33,4 +33,5 @@ const agenda = db.sequelize.define("agenda", {
     }
 })
 
+
 module.exports = agenda;
