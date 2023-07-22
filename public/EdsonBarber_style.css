@@ -149,6 +149,10 @@ select, option{
     width: 30px;
 }
 
+.imagem-agenda:hover {
+    cursor: pointer;
+}
+
 .content {
     background-image: linear-gradient(#000000e6, #5225003d);                                  
     padding: 2em;

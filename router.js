@@ -3,7 +3,6 @@ const router = express.Router();
 const session = require("express-session")
 const agenda = require('./controller/agendaController');
 
-
 router.use(session({
     secret: "mysecretkey",
     resave: false,
@@ -80,7 +79,7 @@ router.get('/agenda/:id', (req, res) => {
     try {
         res.status(200).redirect('/agenda-horarios');
     } catch (error) {
-        res.status(500).json({message: `Erro ao excluir um horário, erro: ${error}`});
+        res.status(500).json({message: `Erro ao acessar os horários, erro: ${error}`});
     }
 })
 

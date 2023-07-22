@@ -11,7 +11,8 @@ const getAll = (req, res) => {
             order: [
               ["hora", "ASC"]
             ]
-        }).then(tabela => {
+        })
+        .then(tabela => {
         const dados = tabela.map(item => {              
             item.telefone = item.telefone.replace(/\D/g, '');
             return item.toJSON();
